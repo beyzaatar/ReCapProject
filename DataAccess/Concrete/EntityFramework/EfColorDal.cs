@@ -9,27 +9,27 @@ namespace DataAccess.Concrete.EntityFramework
 {
     public class EfColorDal : IColorDal
     {
-        public void Add(Color entity)
+        public void Add(Entities.Concrete.Color entity)
         {
             throw new NotImplementedException();
         }
 
-        public void Delete(Color entity)
+        public void Delete(Entities.Concrete.Color entity)
         {
             throw new NotImplementedException();
         }
 
-        public Color Get(Expression<Func<Color, bool>> filter)
+        public Entities.Concrete.Color Get(Expression<Func<Entities.Concrete.Color, bool>> filter)
         {
             throw new NotImplementedException();
         }
 
-        public List<Color> GetAll(Expression<Func<Color, bool>> filter = null)
+        public List<Entities.Concrete.Color> GetAll(Expression<Func<Entities.Concrete.Color, bool>> filter = null)
         {
             throw new NotImplementedException();
         }
 
-        public void Update(Color entity)
+        public void Update(Entities.Concrete.Color entity)
         {
             throw new NotImplementedException();
         }

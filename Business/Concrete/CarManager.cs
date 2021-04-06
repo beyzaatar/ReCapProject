@@ -19,8 +19,30 @@ namespace Business.Concrete
         public List<Car> GetAll()
         {
             //bana ürünleri verebilirsin kurallardan geçtim
-            return _carDal.GetAll();
-
+            return _carDal.GetAll();           
         }
+        public void Add(Car car)
+        {
+            if (car.Description.Length >= 2 && car.DailyPrice > 0)
+            {
+                _carDal.Add(car);
+                Console.WriteLine("Operation successful.");
+            }
+            else
+            {
+                Console.WriteLine("Operation failed.");
+            }
+        }
+
+        public List<Car> GetCarsByBrandId(int id)
+        {
+            return _carDal.GetAll(c => c.BrandId == id);
+        }
+
+        public List<Car> GetCarsByColorId(int id)
+        {
+            return _carDal.GetAll(c => c.ColorId == id);
+        }
+
     }
 }
