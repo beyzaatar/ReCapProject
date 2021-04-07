@@ -9,14 +9,19 @@ namespace ConsoleUI
     {
         static void Main(string[] args)
         {
-            //ProductTest();
+            CarTest();
             //ColorTest();
+            //BrandTest();
+
+        }
+
+        private static void BrandTest()
+        {
             BrandManager brandManager = new BrandManager(new EfBrandDal());
             foreach (var brand in brandManager.Getall())
             {
                 Console.WriteLine(brand.BrandName);
             }
-
         }
 
         private static void ColorTest()
@@ -28,12 +33,12 @@ namespace ConsoleUI
             }
         }
 
-        private static void ProductTest()
+        private static void CarTest()
         {
             CarManager carManager = new CarManager(new EfCarDal());
-            foreach (var car in carManager.GetAll())
+            foreach (var car in carManager.GetCarDetails())
             {
-                Console.WriteLine(car.Id);
+                Console.WriteLine(car.ColorName + "/" + car.BrandName + "/" + car.DailyPrice);
             }
         }
     }
