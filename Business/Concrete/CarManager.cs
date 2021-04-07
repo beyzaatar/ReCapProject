@@ -34,14 +34,14 @@ namespace Business.Concrete
             }
         }
 
-        public List<Car> GetCarsByBrandId(int id)
+        public List<Car> GetCarsByBrandId(int brandId)
         {
-            return _carDal.GetAll(c => c.BrandId == id);
+            return _carDal.GetAll(c => c.BrandId == brandId);
         }
 
-        public List<Car> GetCarsByColorId(int id)
+        public List<Car> GetCarsByColorId(int colorId)
         {
-            return _carDal.GetAll(c => c.ColorId == id);
+            return _carDal.GetAll(c => c.ColorId == colorId);
         }
 
     }
