@@ -49,5 +49,13 @@ namespace Business.Concrete
         {
             return _carDal.GetCarDetails();
         }
+        public void Delete(Car car)
+        {
+            _carDal.Delete(car);
+        }
+        public void Update(Car car)
+        {
+            _carDal.Update(car);
+        }
     }
 }
