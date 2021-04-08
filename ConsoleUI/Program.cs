@@ -14,20 +14,37 @@ namespace ConsoleUI
             //ColorTest();
             //BrandTest();
             //CustomerTest();
-            //RentalTest();
+            RentalTest();
         }
 
         private static void RentalTest()
         {
             RentalManager rentalManager = new RentalManager(new EfRentalDal());
-            rentalManager.Add(new Rental
-            { CarId = 1, CustomerId = 1, RentDate = DateTime.Now, ReturnDate = new DateTime(2021, 4, 10) });
+            var result = rentalManager.Add(new Rental { CarId = 1, CustomerId = 1, RentDate = DateTime.Now, ReturnDate = new DateTime(2021, 4, 10) });
+            Console.WriteLine(result.Message);
+            foreach (var rental in rentalManager.GetAll().Data)
+            {
+                Console.WriteLine("{0} / {1}", rental.CustomerId, rental.RentDate);
+            }
+
         }
 
         private static void CustomerTest()
         {
             CustomerManager customerManager = new CustomerManager(new EfCustomerDal());
-            customerManager.Add(new Customer { UserId = 1, CustomerName = "Beyza ATAR" });
+
+            var result = customerManager.GetAll();
+            if (result.Success == true)
+            {
+                foreach (var customer in result.Data)
+                {
+                    Console.WriteLine(customer.CustomerName);
+                }
+            }
+            else
+            {
+                Console.WriteLine(result.Message);
+            }
         }
 
         private static void BrandTest()
@@ -37,18 +54,19 @@ namespace ConsoleUI
             //{
             //    Console.WriteLine(brand.BrandName);
             //}
-            var result = brandManager.GetAll();
-            if (result.Success == true)
-            {
-                foreach (var car in result.Data)
-                {
-                    Console.WriteLine(car.BrandName);
-                }
-            }
-            else
-            {
-                Console.WriteLine(result.Message);
-            }
+            var result = brandManager.Add(new Brand { BrandName="VOLVO"});
+            //var result = brandManager.GetAll();
+            //if (result.Success == true)
+            //{
+            //    foreach (var car in result.Data)
+            //    {
+            //        Console.WriteLine(car.BrandName);
+            //    }
+            //}
+            //else
+            //{
+            //    Console.WriteLine(result.Message);
+            //}
         }
 
         private static void ColorTest()

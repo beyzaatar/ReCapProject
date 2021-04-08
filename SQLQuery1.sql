@@ -1,0 +1,62 @@
+﻿CREATE TABLE [dbo].[Colors](
+	
+	ID int NOT NULL IDENTITY(1,1) primary key,
+	COLORNAME varchar(50)
+
+);
+
+CREATE TABLE [dbo].[Brands](
+	
+	ID int NOT NULL IDENTITY(1,1) primary key,
+	BRANDNAME varchar(50)
+
+);
+CREATE TABLE Cars(
+	
+	ID int NOT NULL IDENTITY(1,1) primary key,
+	BRANDID int,
+	COLORID int,
+	MODELYEAR int,
+	DAILYPRICE int,
+	DESCRIPTION varchar(50),
+
+	FOREIGN KEY(BRANDID) REFERENCES Brands(Id),
+	FOREIGN KEY(COLORID) REFERENCES Colors(Id)
+);
+
+
+CREATE TABLE [dbo].[Users]
+(
+	[ID] INT NOT NULL PRIMARY KEY IDENTITY, 
+    	[FIRSTNAME] VARCHAR(50) NOT NULL, 
+    	[LASTNAME] VARCHAR(50) NOT NULL, 
+    	[EMAIL] VARCHAR(100) NOT NULL, 
+	[PASSWORD] VARCHAR(100) NOT NULL,
+
+);
+
+
+
+
+CREATE TABLE Customers(
+	
+	ID int NOT NULL IDENTITY(1,1) primary key,
+	USERID int,
+	CUSTOMERNAME varchar(50)
+
+);
+
+
+CREATE TABLE Rentals(
+	
+	ID int NOT NULL IDENTITY(1,1) primary key,
+	CARID int,
+	CUSTOMERID int,
+	RENTDATE datetime,
+	RETURNDATE datetime
+	
+	FOREIGN KEY(CARID) REFERENCES Cars(ID),
+	FOREIGN KEY(CUSTOMERID) REFERENCES Customers(ID)
+);
+
+
