@@ -41,5 +41,7 @@ namespace Business.Constants
         public static string UserUpdated = "kullanıcı güncellendi!";
         //public static string UserNameInvalid = "kullanıcı ismi geçersiz!";
         public static string UsersListed = "kullanıcılar listelendi";
+
+        public static string CarImageCountLimitExceeded = "5 tane arabadan fazla yükleyemezsin" ;
     }
 }

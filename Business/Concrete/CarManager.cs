@@ -3,6 +3,7 @@ using Business.Constants;
 using Business.ValidationRules.FluentValidation;
 using Core.Aspects.Autofac.Validation;
 using Core.CrossCuttingConcerns.Validation;
+using Core.Utilities.Business;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
@@ -17,6 +18,7 @@ namespace Business.Concrete
     public class CarManager : ICarService
     {
         ICarDal _carDal;
+        
 
         public CarManager(ICarDal carDal)
         {
@@ -35,7 +37,8 @@ namespace Business.Concrete
 
         [ValidationAspect(typeof(CarValidator))]
         public IResult Add(Car car)
-        {         
+        {
+            
             _carDal.Add(car);
             return new SuccessResult(Messages.CarAdded);           
         }
